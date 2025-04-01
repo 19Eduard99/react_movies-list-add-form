@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { TextField } from '../TextField';
 import { Movie } from '../../types/Movie';
 
+const urlPattern = `^((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=+$,\\w]+@)?[A-Za-z0-9.-]+|(?:www\\.|[-;:&=+$,\\w]+@)[A-Za-z0-9.-]+)((?:\\/[+~%/.\\w-_]*)?\\??(?:[-+=&;%@.,\\w_]*)#?(?:[,.!/\\\\\\w]*))?)$`;
+
 export const NewMovie = ({ onAdd }: { onAdd: (movie: Movie) => void }) => {
   // Increase the count after successful form submission
   // to reset touched status of all the `Field`s
@@ -52,6 +54,7 @@ export const NewMovie = ({ onAdd }: { onAdd: (movie: Movie) => void }) => {
         value={imgUrl}
         onChange={newUrl => setImgUrl(newUrl)}
         required
+        pattern={urlPattern}
       />
 
       <TextField
@@ -60,6 +63,7 @@ export const NewMovie = ({ onAdd }: { onAdd: (movie: Movie) => void }) => {
         value={imdbUrl}
         onChange={newImdbUrl => setImdbUrl(newImdbUrl)}
         required
+        pattern={urlPattern}
       />
 
       <TextField
