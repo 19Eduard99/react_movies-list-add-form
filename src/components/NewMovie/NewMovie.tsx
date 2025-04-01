@@ -13,12 +13,13 @@ export const NewMovie = ({ onAdd }: { onAdd: (movie: Movie) => void }) => {
 
   const [count, setCount] = useState(0);
 
-  const btnDisabled = !title || !imgUrl || !imdbUrl || !imdbId;
+  const btnDisabled =
+    !title.trim() || !imgUrl.trim() || !imdbUrl.trim() || !imdbId.trim();
 
   const handlerSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     onAdd({ title, description, imgUrl, imdbUrl, imdbId });
-    setCount(count + 1);
+    setCount(prevCount => prevCount + 1);
     setTitle('');
     setDescription('');
     setImgUrl('');
